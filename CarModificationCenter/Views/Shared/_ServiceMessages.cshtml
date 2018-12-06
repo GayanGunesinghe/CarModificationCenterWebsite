@@ -1,0 +1,16 @@
+﻿<!--code for the unfer information service message boxes-->
+
+@if (@TempData["msg-des"] != null){    //Display only if needed
+<div class="alert alert-dismissible @TempData["msg-type"]">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    @if (@TempData["msg-head"] != null)
+    {
+        <h4>@TempData["msg-head"]</h4>//display header when available
+    }
+    @if (@TempData["msg-sub-head"] != null)
+    {
+        <strong>@TempData["msg-sub-head"]</strong>  //display sub header when available
+    }
+    <p>@TempData["msg-des"]</p>
+</div>
+}

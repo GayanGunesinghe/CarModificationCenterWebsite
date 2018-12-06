@@ -1,0 +1,93 @@
+﻿<!--Partial View of ManageAccount-->
+@model CarModificationCenter.Models.website_users
+
+<div class="well">
+    @using (Html.BeginForm("Registration", "Auth", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.Partial("_ServiceMessages")
+        <h1><img src="@Url.Action("DisplayPicture","Home")" class="img-circle" />  @User.Identity.Name</h1><br />
+        <fieldset>
+            User Account Information
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(u => u.Email, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Email, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Mobile, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Mobile, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Address, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Address, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Country, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Country, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <button class="btn btn-default" data-toggle="modal" data-target="#details">Edit Profile</button>
+                </div>
+            </div>
+        </fieldset>
+    }
+</div>
+<!--edit user details-->
+<div class="modal fade" id="details" role="dialog">
+    <div class="modal-dialog" style="width: 600px">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><strong>Update user account details</strong></h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UpdateDetails", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <fieldset>
+                        <div class="form-group">
+                            @Html.LabelFor(u => u.Email, new { @class = "col-lg-2 control-label" })
+                            <div class="col-lg-10">
+                                @Html.DisplayFor(u => u.Email, new { @class = "col-lg-6 control-label" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(u => u.Mobile, new { @class = "col-lg-2 control-label" })
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(u => u.Mobile, new { @class = "col-lg-6 control-label" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(u => u.Address, new { @class = "col-lg-2 control-label" })
+                            <div class="col-lg-10">
+                                @Html.TextAreaFor(u => u.Address, new { @class = "col-lg-6 control-label" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(u => u.Country, new { @class = "col-lg-2 control-label" })
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(u => u.Country, new { @class = "col-lg-6 control-label" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="modal-footer">
+                                <button class="btn btn-default" type="submit">Save</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@Html.Partial("_UpdatePassword")*@

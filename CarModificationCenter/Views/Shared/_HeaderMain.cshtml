@@ -1,0 +1,91 @@
+﻿
+<!--main header with search bar/site logo and shopping cart-->
+<div class="header-main">
+    <div class="container">
+        <div class="col-lg-3">
+            <!--site logo-->
+            <a href="@Url.Action("Index", "Home")">
+                <div class="logo"></div>
+            </a>
+        </div>
+        <div class="col-lg-7">
+            <!--search bar-->
+            <div class="search">
+                @using (Html.BeginForm("ShopNow", "Shop", FormMethod.Post, new { @class = "navbar-form", role = "search" }))
+                {
+                <div class="form-group">
+                    <input class="form-control searchbar" placeholder="Search for products..." type="text">
+                    <select class="form-control" id="select">
+                        <option selected="selected" disabled>-All Categories-</option>
+                        <option>Sport Cars</option>
+                        <option>Motor Bikes</option>
+                    </select>
+                </div>
+                    <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                        }
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <!--shopping cart-->
+            <div class="cart">
+                <div class="d-flex flex-row align-items-center justify-content-end">
+                    <form action="#" method="post">
+                        <input name="cmd" value="_cart" type="hidden">
+                        <input name="display" value="1" type="hidden">
+                        <button class="btn btn-primary" type="submit" name="submit" value="">
+                            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                            Cart
+                            <span class="badge" id="cartValue">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--secondary header bar-->
+<div class="navbar navbar-default cat-secondary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#secondary">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="container">
+        <div class="navbar-collapse collapse" id="secondary">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="category">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="fa fa-bars"></span>
+                        C A T E G O R I E S
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Modified Cars</a></li>
+                        <li><a href="#">Modified Bikes</a></li>
+                        <li><a href="#">Car Electronics</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ShopNow", "Shop")">Shop</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ShopNow", "Shop")">Projects</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ContactUs","Contact")">Contact</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

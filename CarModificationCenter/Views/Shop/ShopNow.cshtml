@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "ShopNow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@Html.Partial("_HeaderMain")*@    <!--load main header-->
+<div class="home">  <!--banner and breadcrums-->
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2>MODIFIED CARS &amp; BIKES</h2>
+    </div>
+</div>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="active">Shop</li>
+</ul>
+<br/>
+<div class="container body-content">
+    <div class="shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <!-- Shop Sidebar -->
+                    @Html.Partial("_ShopSidebar")
+                </div>
+                <div class="col-lg-9">
+                    <!-- Shop Content -->
+                    @Html.Partial("_ShopContent")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

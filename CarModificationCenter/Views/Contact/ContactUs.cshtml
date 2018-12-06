@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Html.Partial("_HeaderMain")*@    <!--load main header-->
+<div class="home">
+    <!--banner and breadcrums-->
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2>CONTACT US</h2>
+    </div>
+</div>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="active">Contact</li>
+</ul>
+
+<div class="container body-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="contact_info_container d-flex flex-lg-row justify-content-between align-items-between">
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Content/Images/contact_1.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Phone</div>
+                            <div class="contact_info_text">+94 076 370 8890</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Content/Images/contact_2.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Email</div>
+                            <div class="contact_info_text">carmodification@hotmail.com</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Content/Images/contact_3.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Address</div>
+                            <div class="contact_info_text">10 pacific pinnacle, Galle, SL</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    @Html.Partial("_ContactUsForm")
+</div>

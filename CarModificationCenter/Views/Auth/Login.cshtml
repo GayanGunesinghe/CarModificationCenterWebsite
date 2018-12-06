@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<div class="container body-content">   
+    <ul class="pager">
+        <li class="previous"><a href="@Url.Action("Index", "Home")">&larr;Home</a></li>
+    </ul>
+    @Html.Partial("_LoginForm") <!--Load the LoginForm partial view-->
+</div>

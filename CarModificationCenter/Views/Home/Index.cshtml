@@ -1,0 +1,282 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PagedList.IPagedList<CarModificationCenter.Models.website_vehicles>
+
+@*@Html.Partial("_HeaderMain")*@    <!--load main header-->
+@Html.Partial("_CarouselSlider") <!--load the carousel slider-->
+<div class="container body-content">
+    <div class="shop">
+        <div class="container">
+            <div class="row">
+                <!-- Shop Content -->
+                <h2 style="text-align: center">Latest Arrivals & Hot Deals</h2><br />
+                <div class="shop_content col-lg-12">
+                    <div class="product_grid" style="position: relative; height: 1012px;">
+                        @foreach (var item in Model)
+                        {
+                            <div class="product_item is_new" style="position: absolute; left: 0; top: 253px;">
+                                <div class="product_image d-flex flex-column align-items-center justify-content-center">
+                                    <img src="@Url.Action("LoadPicture", "Shop", new{ itemId = item.Id})" />
+                                    <a class="overlay-link" style="align-content: center">
+                                        <div class="product_fav" data-toggle="modal" data-target="#@item.Id"><i class="fa fa-search-plus"></i></div>
+                                    </a>
+                                </div>
+                                <div class="product_content">
+                                    <div class="product_price">@($"{item.Price:LKR #,###.##}")@*<span>Rs30,000,000</span>*@</div>
+                                    <div class="product_name">
+                                        <div><a href="#" tabindex="0">@item.Manufacturer @item.Model</a></div>
+                                    </div>
+                                    <small class="text-muted">Posted on @(Convert.ToDateTime(item.Timestamp).Date)</small>
+                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                        <form action="#" method="post">
+                                            <fieldset>
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="business" value=" " />
+                                                <input type="hidden" name="item_name" value="@item.Manufacturer @item.Model" />
+                                                <input type="hidden" name="amount" value="@item.Price" />
+                                                <input type="hidden" name="discount_amount" value="0.00" />
+                                                <input type="hidden" name="currency_code" value="LKR" />
+                                                <input type="hidden" name="return" value=" " />
+                                                <input type="hidden" name="cancel_return" value=" " />
+                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                                <ul class="product_marks">
+                                    <li class="product_mark product_discount">-25%</li>
+                                    <li class="product_mark product_new">new</li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="modal fade" id="@item.Id" role="dialog">
+                            <div class="modal-dialog" style="width: 500px">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>@item.Manufacturer @item.Model</strong></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="myCarousel_@item.Id" class="carousel slide" data-ride="carousel" data-pause="hover">
+                                            <!-- Indicators-->
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                                <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+                                            </ol>
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="@Url.Action("LoadPicture", "Shop", new {itemId = item.Id})" class="img-responsive" />
+                                                </div>
+                                                <div class="item item2">
+                                                    <img src="@Url.Action("LoadPicture", "Shop", new {itemId = item.Id})" class="img-responsive" />
+                                                </div>
+                                                <div class="item item3">
+                                                    <img src="@Url.Action("LoadPicture", "Shop", new {itemId = item.Id})" class="img-responsive" />
+                                                </div>
+                                                <div class="item item4">
+                                                    <img src="@Url.Action("LoadPicture", "Shop", new {itemId = item.Id})" class="img-responsive" />
+                                                </div>
+                                            </div>
+                                            <a class="left carousel-control" style="background-image: none" href="#myCarousel_@item.Id" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" style="background-image: none" href="#myCarousel_@item.Id" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                        <small class="text-muted">Posted on @(Convert.ToDateTime(item.Timestamp).Date)</small>
+                                        <p>
+                                            <div class="pricetag">LKR <strong>@($"{item.Price:#,###.##}")</strong></div><br />
+                                            <strong>Brand:</strong> @item.Manufacturer <br />
+                                            <strong>Model:</strong> @item.Model <br />
+                                            <strong>Model Year:</strong> 2012 <br />
+                                            <strong>Transmission:</strong> @item.Transmission <br />
+                                            <strong>Fuel Type:</strong> @item.FuelType <br /><br/>
+                                            @item.Description
+
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--list of special details -->
+    <div class="container body-content">
+        <hr />
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="contact_info_container d-flex flex-lg-row justify-content-between align-items-between">
+                    <!--Info Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Content/Images/char_1.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Home Delivery</div>
+                            <div class="contact_info_text">from LKR 5000 onwards</div>
+                        </div>
+                    </div>
+                    <!-- Info Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Content/Images/char_3.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Money Back Guarantee</div>
+                            <div class="contact_info_text">for all vehicles</div>
+                        </div>
+                    </div>
+                    <!-- Info Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/Content/Images/char_4.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Daily Discounts</div>
+                            <div class="contact_info_text">Best in the whole country</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="blog">
+        <h2 style="text-align: center">Car Project and Reviews</h2><br />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/4.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>McLaren P1™ GTR</strong><br />
+                                Without road-car regulations to hold it back, the McLaren P1™ GTR is the ultimate driving machine.
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog1">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog-->
+                        <div class="modal fade" id="blog1" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>McLaren P1™ GTR</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/4.jpg" style="width: 100%" />
+                                            <blockquote>
+                                                <p>Without road-car regulations to hold it back, the McLaren P1™ GTR is the ultimate driving machine.</p>
+                                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                            </blockquote>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/3.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>McLaren P1™</strong><br />
+                                The McLaren P1™ follows in the footsteps of the iconic McLaren F1, the car that pushed boundaries
+                                further than any of its rivals.
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog2">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog post-->
+                        <div class="modal fade" id="blog2" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>McLaren P1™ GTR</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/3.jpg" style="width: 100%" />
+                                            <blockquote>
+                                                <p>
+                                                    The McLaren P1™ follows in the footsteps of the iconic McLaren F1, the car that pushed boundaries
+                                                    further than any of its rivals.
+                                                </p>
+                                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                            </blockquote>
+                                        The P1 is electronically limited to a top speed of 217 mph (350 km/h). The P1 has a dry weight of 1,395 kg (3,075 lb), giving it a power-to-weight ratio of 647 bhp/tonne. It has a kerb weight of 1,547 kg (3,411 lb) which translates to 593 bhp/ tonne.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/2.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>2018 NISSAN GT-R®</strong><br />
+                                Start with an obsession to detail and a radical belief that
+                                a real supercar delivers performance in real-world conditions.
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog3">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog post-->
+                        <div class="modal fade" id="blog3" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>2018 NISSAN GT-R®</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/2.jpg" style="width: 100%" />
+                                            <blockquote>
+                                                <p>
+                                                    Start with an obsession to detail and a radical belief that
+                                                    a real supercar delivers performance in real-world conditions.
+                                                </p>
+                                                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                            </blockquote>
+                                        The P1 is electronically limited to a top speed of 217 mph (350 km/h). The P1 has a dry weight of 1,395 kg (3,075 lb), giving it a power-to-weight ratio of 647 bhp/tonne. It has a kerb weight of 1,547 kg (3,411 lb) which translates to 593 bhp/ tonne.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="@Url.Action("CompletedProjects","Project")">VIEW ALL REVIEWS</a>
+    </div>
+</div>

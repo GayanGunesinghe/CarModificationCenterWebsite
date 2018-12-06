@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "CompletedProjects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Html.Partial("_HeaderMain")*@    <!--load main header-->
+<div class="home">
+    <!--banner and breadcrums-->
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2>COMPLETED PROJECTS</h2>
+    </div>
+</div>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li><a>Projects</a></li>
+    <li class="active">Completed Projects</li>
+</ul>
+<div class="container body-content">
+    <div class="blog">
+        <h2 style="text-align: center">Car Project and Reviews</h2><br />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/4.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>McLaren P1™ GTR</strong><br />
+                                Without road-car regulations to hold it back, the McLaren P1™ GTR is the ultimate driving machine.
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog1">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog-->
+                        <div class="modal fade" id="blog1" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>McLaren P1™ GTR</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/4.jpg" style="width: 100%" />
+                                            <blockquote>
+                                        <p>Without road-car regulations to hold it back, the McLaren P1™ GTR is the ultimate driving machine.</p>
+                                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                        </blockquote>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/3.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>McLaren P1™</strong><br />
+                                The McLaren P1™ follows in the footsteps of the iconic McLaren F1, the car that pushed boundaries
+                                further than any of its rivals.
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog2">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog post-->
+                        <div class="modal fade" id="blog2" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>McLaren P1™ GTR</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/3.jpg" style="width: 100%" />
+                                            <blockquote>
+                                        <p>
+                                            The McLaren P1™ follows in the footsteps of the iconic McLaren F1, the car that pushed boundaries
+                                            further than any of its rivals.
+                                        </p>
+                                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                        </blockquote>
+                                        The P1 is electronically limited to a top speed of 217 mph (350 km/h). The P1 has a dry weight of 1,395 kg (3,075 lb), giving it a power-to-weight ratio of 647 bhp/tonne. It has a kerb weight of 1,547 kg (3,411 lb) which translates to 593 bhp/ tonne.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/2.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>2018 NISSAN GT-R®</strong><br />
+                                Start with an obsession to detail and a radical belief that
+                                a real supercar delivers performance in real-world conditions.
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog3">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog post-->
+                        <div class="modal fade" id="blog3" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>2018 NISSAN GT-R®</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/2.jpg" style="width: 100%" />
+                                            <blockquote>
+                                        <p>
+                                            Start with an obsession to detail and a radical belief that
+                                            a real supercar delivers performance in real-world conditions.
+                                        </p>
+                                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                        </blockquote>
+                                        The P1 is electronically limited to a top speed of 217 mph (350 km/h). The P1 has a dry weight of 1,395 kg (3,075 lb), giving it a power-to-weight ratio of 647 bhp/tonne. It has a kerb weight of 1,547 kg (3,411 lb) which translates to 593 bhp/ tonne.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image: url(/Content/Images/1.jpg)"></div>
+                            <div class="blog_text">
+                                <strong>911 Carrera Project</strong><br />
+                                Etiam leo nibh, consectetur nec orci et, tempus tempus ex
+                            </div>
+                            <div class="blog_button"><a href="#" data-toggle="modal" data-target="#blog4">Continue Reading</a></div>
+                        </div>
+                        <!--expand blog post-->
+                        <div class="modal fade" id="blog4" role="dialog">
+                            <div class="modal-dialog" style="width: 700px">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"><strong>911 Carrera Project</strong></h4>
+                                        <small class="text-muted">Posted on 11/07/2018 </small>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img src="/Content/Images/1.jpg" style="width: 100%" />
+                                            <blockquote>
+                                        <p>
+                                            The McLaren P1™ follows in the footsteps of the iconic McLaren F1, the car that pushed boundaries
+                                            further than any of its rivals.
+                                        </p>
+                                        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                        </blockquote>
+                                        The P1 is electronically limited to a top speed of 217 mph (350 km/h). The P1 has a dry weight of 1,395 kg (3,075 lb), giving it a power-to-weight ratio of 647 bhp/tonne. It has a kerb weight of 1,547 kg (3,411 lb) which translates to 593 bhp/ tonne.
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

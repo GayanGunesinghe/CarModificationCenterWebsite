@@ -1,0 +1,63 @@
+﻿<!--Partial veiw of RegistrationForm-->
+@model CarModificationCenter.Models.RegistrationViewModel
+<div class="panel-form">
+    <div class="well">
+        @using (Html.BeginForm("Registration", "Auth", FormMethod.Post, new {@class = "form-horizontal", role = "form", enctype = "multipart/form-data"}))
+        {
+            @Html.Partial("_ServiceMessages")
+            <fieldset>
+                <legend>Create New Account.</legend>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-user" style="margin-right: 7px"></span>FIRST NAME
+                        @Html.TextBoxFor(u => u.FirstName, new {@class = "form-control", placeholder = "First Name"})
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-user" style="margin-right: 7px"></span>LAST NAME
+                        @Html.TextBoxFor(u => u.LastName, new {@class = "form-control", placeholder = "Last Name"})
+                        @Html.ValidationMessageFor(m => m.LastName, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-envelope" style="margin-right: 7px"></span>EMAIL
+                        @Html.TextBoxFor(u => u.Email, new {@class = "form-control", placeholder = "Email"})
+                        @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-key" style="margin-right: 7px"></span>PASSWORD
+                        @Html.PasswordFor(u => u.Password, new {@class = "form-control", placeholder = "Password"})
+                        @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-key" style="margin-right: 7px"></span>CONFIRM PASSWORD
+                        @Html.PasswordFor(u => u.ConfirmPassword, new {@class = "form-control", placeholder = " Confirm Password"})
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-upload" style="margin-right: 7px"></span>PROFILE PICTURE
+                        <input type="file" name="file1" id="file1" onchange="validateSize()"/>
+                        <span class="text-warning" id="file1-alert">[Maximum upload file size 4MB]</span>
+                    </div>
+                </div>
+                <p><small>By clicking create account, I agree to your terms and conditions.</small></p>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <button class="btn btn-success" type="submit" style="width: 100%">Create account</button>
+                    </div>
+                </div>
+                <p>Already have an account? <a href="Login">Login.</a></p>
+            </fieldset>
+        }
+    </div>
+</div>
+

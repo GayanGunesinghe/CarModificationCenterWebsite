@@ -1,0 +1,170 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Vehicles Modification Center</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="main">
+                <ul class="nav navbar-nav navbar-left">
+                    <!--display phone number and email address-->
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">
+                            <div class="logo"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">
+                            <strong style="color: #219ff3">CAR MODIFICATION</strong><strong> CENTRE</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ShopNow","Shop")">
+                            Shop
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CompletedProjects","Project")">
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        @if (@User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("ProjectProgress","Project")">
+                                Project Progress
+                            </a>
+                        }
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ContactUs","Contact")">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if (@User.Identity.IsAuthenticated)
+                        {
+                            <img src="@Url.Action("DisplayPicture", "Home")" class="img-thumbnail" />
+                        }
+                    </li>
+                    <li>
+                        @if (@User.Identity.IsAuthenticated)
+                        {
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                @User.Identity.Name<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="@Url.Action("ManageAccount", "UserAccount")">
+                                        <span class="fa fa-user-circle" aria-hidden="true"></span>
+                                        View profile
+                                    </a>
+                                </li>
+                                @if (User.Identity.Name == "System Adminstrator")
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <span class="fa fa-gear" aria-hidden="true"></span>
+                                            Settings
+                                        </a>
+                                    </li>
+                                }
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.Action("Logout", "Auth")">
+                                        <span class="fa fa-sign-out" aria-hidden="true"></span>
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Registration", "Auth")">
+                                <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                                Register
+                            </a>
+                        }
+                    </li>
+                    <li>
+                        @if (!@User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Login", "Auth")">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span>
+                                Login
+                            </a>
+                        }
+                    </li>
+                    <!--cart icons-->
+                    <li>
+                        <form action="#" method="post">
+                            <input name="cmd" value="_cart" type="hidden">
+                            <input name="display" value="1" type="hidden">
+                            <button class="btn btn-default" type="submit" name="submit" value="" style="height: 50px">
+                                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                Cart
+                                <span class="badge" id="cartValue">0</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody() <!--render page details-->
+    <!--copyright details-->
+    <footer class="modal-footer">
+        <div class="copy-right">
+            <div class="container">
+                <p>
+                    © @DateTime.Now.Year Vehicle Modification Center. All rights reserved | Design by
+                    <a href="#"> Group SD01.</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/Scripts/js")
+    <script>
+        paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+
+        paypalm.minicartk.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            //if (total < 3) {
+            //    alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            //    evt.preventDefault();
+            //}
+            paypalm.minicartk.cart.items().forEach(
+                alert(console)
+            );
+
+            document.getElementById("cartValue").innerHTML = total;
+        });
+    </script>
+</body>
+</html>

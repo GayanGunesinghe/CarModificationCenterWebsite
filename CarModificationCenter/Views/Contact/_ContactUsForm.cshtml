@@ -1,0 +1,48 @@
+﻿<!--Partial veiw of RegistrationForm-->
+@model CarModificationCenter.Models.contact
+<div class="panel-form">
+    <div class="well">
+        @using (Html.BeginForm("ContactUs", "Contact", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.Partial("_ServiceMessages")
+            <fieldset>
+                <legend>Get in Touch.</legend>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-user" style="margin-right: 7px"></span>FULL NAME
+                        @Html.TextBoxFor(u => u.Name, new { @class = "form-control", placeholder = "Full Name" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-envelope" style="margin-right: 7px"></span>EMAIL
+                        @Html.TextBoxFor(u => u.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="glyphicon glyphicon-subtitles" style="margin-right: 7px"></span>SUBJECT
+                        @Html.TextBoxFor(u => u.Subject, new { @class = "form-control", placeholder = "Subject" })
+                        @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-file-text" style="margin-right: 7px"></span>MESSAGE
+                        @Html.TextAreaFor(u => u.Message, new { @class = "form-control", placeholder = "Enter your message" })
+                        @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <p><small>Our customer service agent will be in contact with you soon.</small></p>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <button class="btn btn-success" type="submit" style="width: 100%">Send Message</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,21 @@
+﻿<!--Manage the user account details GUI-->
+@{
+    ViewBag.Title = "ManageAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="home">
+    <!--banner and breadcrums-->
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2>User Profile</h2>
+    </div>
+</div>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="active">Profile</li>
+</ul>
+<div class="container body-content">
+    <br />
+    @Html.Partial("_UserDetailsForm") <!--User information form-->
+</div>

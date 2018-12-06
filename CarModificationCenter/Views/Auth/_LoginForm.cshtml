@@ -1,0 +1,55 @@
+﻿<!--Partail view for login form-->
+@model CarModificationCenter.Models.LoginViewModel
+
+<div class="panel-form">
+    <div class="well">
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.Partial("_ServiceMessages")
+            <fieldset>
+                <legend>HELLO!</legend>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-envelope" style="margin-right: 7px"></span>EMAIL
+                        @Html.TextBoxFor(u => u.Email, new { @class = "form-control", placeholder = "Email", required = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <span class="fa fa-key" style="margin-right: 7px"></span>PASSWORD
+                        @Html.PasswordFor(u => u.Password, new { @class = "form-control", placeholder = "Password", required = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <button class="btn btn-success" type="submit" style="width: 100%">Login</button>
+                    </div>
+                </div>
+                <p>Don't have an account? <a href="Registration">Register.</a></p>
+                <!--social logins-->
+                <hr />
+                @*<div class="form-group">
+                    <div class="col-lg-12">
+                        <button class="btn btn-primary" type="submit" style="width: 100%">
+                            <span class="fa fa-facebook-square"></span>
+                            FACEBOOK
+                        </button>
+                    </div>
+                </div>*@
+            </fieldset>
+        }
+        @using (Html.BeginForm("SocialLogin", "Auth", new { returnUrl = @Url.Action("Index", "Home") }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <button class="btn btn-danger" type="submit" style="width: 100%">
+                            <span class="fa fa-google-plus-square"></span>
+                            GOOGLE+
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

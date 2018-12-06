@@ -1,0 +1,57 @@
+﻿@model CarModificationCenter.Models.project
+@{
+    ViewBag.Title = "ProjectProgress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="home">
+    <!--banner and breadcrums-->
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2>Check Project Progress</h2>
+    </div>
+</div>
+<ul class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="active">Project Progress</li>
+</ul>
+
+<div class="container body-content">
+    <button class="btn btn-default" data-toggle="modal" data-target="#progress">Check Progress</button>
+    @Html.Partial("_CheckProgress")
+
+    @using (Html.BeginForm("ProjectProgress", "Project", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.Partial("_ServiceMessages")
+        <h1>Project Details</h1><br />
+        <fieldset>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(u => u.ProjectName, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.ProjectName, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Design, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Design, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Type, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Type, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(u => u.Status, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-10">
+                    @Html.DisplayFor(u => u.Status, new { @class = "col-lg-2 control-label" })
+                </div>
+            </div>
+        </fieldset>
+    }
+
+</div>
+
